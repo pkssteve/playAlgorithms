@@ -19,6 +19,7 @@ void merge(int list[], int left, int mid, int right)
     j = mid + 1;
     k = left;
 
+    //합병
     while (i <= mid && j <= right)
     {
         if (list[i] <= list[j])
@@ -27,6 +28,7 @@ void merge(int list[], int left, int mid, int right)
             sorted[k++] = list[j++];
     }
 
+    //남아있는 값들 일괄 복사
     if (i > mid)
     {
         for (l = j; l <= right; l++)
@@ -34,6 +36,7 @@ void merge(int list[], int left, int mid, int right)
             sorted[k++] = list[l];
         }
     }
+    //남아있는 값들 일괄 복사
     else
     {
         for (l = i; l <= mid; l++)
@@ -42,6 +45,7 @@ void merge(int list[], int left, int mid, int right)
         }
     }
 
+    //임시 배열의 값들을 원래 배열로 복사.
     for (l = left; l <= right; l++)
     {
         list[l] = sorted[l];
@@ -66,7 +70,7 @@ int main()
     int n = MAX_SIZE;
     int list[MAX_SIZE] = {21, 10, 12, 20, 25, 13, 15, 22};
 
-    merge_sort(list, 0, n - 1);
+    merge_sort(list, 0, n - 1); //right는 닫힌 구역으로 넘긴다.
 
     for (i = 0; i < n; i++)
     {
